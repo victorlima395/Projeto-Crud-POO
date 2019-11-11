@@ -5,6 +5,7 @@
  */
 package univs.edu.telas;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import univs.edu.usuario.Usuario;
 import univs.edu.usuario.UsuarioDAO;
@@ -16,21 +17,26 @@ import univs.edu.usuario.UsuarioTableModel;
  *
  * @author adrianolimacandido
  */
-public class TelaPesquisaUsuario extends javax.swing.JFrame {
+public class TelaVincularUsuario extends javax.swing.JFrame {
 
     Usuario usuario = new Usuario();
     UsuarioDAO dao = new UsuarioDAO();
     
     
-    public TelaPesquisaUsuario() {
+    public TelaVincularUsuario() {
         initComponents();
         atualizarTabela();
     }
     
     public void atualizarTabela(){
         UsuarioTableModel tm = 
-                new UsuarioTableModel(dao.listarUsuarios());
+        new UsuarioTableModel(dao.listarUsuarios());
         tabelaUsuario.setModel(tm);
+    }
+    
+    public void vincularUsuario(TelaFuncionario tela, Usuario usuario){
+        tela.carregarUsuario(usuario);
+        
     }
 
     /**
@@ -200,20 +206,21 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVincularUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVincularUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVincularUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPesquisaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaVincularUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPesquisaUsuario().setVisible(true);
+                new TelaVincularUsuario().setVisible(true);
             }
         });
     }
