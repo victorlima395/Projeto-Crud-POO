@@ -17,24 +17,23 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     Funcionario funcionario = new Funcionario();
     FuncionarioDAO dao = new FuncionarioDAO();
+
     public TelaFuncionario() {
         initComponents();
     }
-    
-    public void limarCampos(){
+
+    public void limparCampos() {
         funcionario = new Funcionario();
         tfNome.setText("");
         tfSalario.setText("");
         tfCPF.setText("");
         jcCargo.setSelectedItem("Selecione");
     }
-    
-    public void carregarUsuario(Usuario usuario){
+
+    public void carregarUsuario(Usuario usuario) {
         funcionario.setUsuario(usuario);
         tfUsuario.setText(usuario.getLogin());
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,12 +95,27 @@ public class TelaFuncionario extends javax.swing.JFrame {
         tfUsuario.setEnabled(false);
 
         jButton1.setText("Selecionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salvar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Voltar");
 
         jButton4.setText("Pesquisar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Limpar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -209,8 +223,29 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jcCargoActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        limarCampos();
+        limparCampos();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaVincularUsuario tela = new TelaVincularUsuario(this);
+        tela.setVisible(true);    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(!tfNome.getText().isEmpty() && !tfCPF.getText().isEmpty()
+                && !tfSalario.getText().isEmpty()
+                && !jcCargo.getSelectedItem().equals("Selecione")){
+            
+            funcionario.setCargo(String.valueOf(jcCargo.getSelectedItem()));
+            funcionario.setCpf(tfCPF.getText());
+            funcionario.setNomeFuncionario(tfNome.getText());
+            funcionario.setSalario(Double.parseDouble(tfSalario.getText()));
+            
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
