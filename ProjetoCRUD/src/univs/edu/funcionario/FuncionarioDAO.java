@@ -68,4 +68,18 @@ public class FuncionarioDAO {
         return funcionarios;
     }
     
+    public Funcionario autenticarFuncionario(String login, String senha){
+        sessao = HibernateUtil.
+                getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        Funcionario funcionario = (Funcionario) sessao.
+                createCriteria(Funcionario.class)
+                .add(Restrictions.eq("usuario.login", login))
+                .add(Restrictions.eq("usuario.senha", senha))
+                .uniqueResult();
+        sessao.close();
+        
+        return funcionario != null ? funcionario : null;
+    }
+    
 }

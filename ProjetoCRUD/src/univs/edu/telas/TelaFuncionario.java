@@ -121,6 +121,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salvar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +272,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
